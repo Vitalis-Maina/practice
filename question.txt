@@ -1,0 +1,20 @@
+ How much does it weigh?
+
+In this stage, we start by identifying files of the same size in bytes. The os.Stat function returns the FileInfo interface that allows you to get access to the file extension and its size.
+
+Of course, we cannot be sure that files of the same size and format are duplicates. This will help us, however, narrow down the search. It is also important to keep track of the scanned files. Add an ability to search for files of a specific file format and then sort the found files by size.
+
+Tip: Use a map with size as keys and a slice of paths as values.
+
+Objectives
+Keep the functionality from the previous stage. To complete this stage, your program should:
+
+Accept a command-line argument that is a root directory with files and folders. Use the fmt.Print family of functions to output the message Directory is not specified if there is no command-line argument;
+
+Read user input that specifies the file format (see examples). Empty input should match any file format;
+
+Print a menu with two sorting options: Descending and Ascending. They both represent the respective order by size of groups of files. Read the input. Use the fmt.Print family of functions to output the message Wrong option if any other input is entered. Repeat until a correct input is provided;
+
+Iterate over folders and print the information about files of the same size: their size, path, and names.
+
+Please note: you should use the full path to file from the root directory when printing or reading.
