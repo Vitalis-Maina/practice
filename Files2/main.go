@@ -69,7 +69,6 @@ func main() {
 			return sizes[i] < sizes[j]
 		})
 	}
-
 	fmt.Println()
 	for _, size := range sizes {
 		paths := fileGroups[size]
