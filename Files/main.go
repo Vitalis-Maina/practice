@@ -10,7 +10,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("Directory is not Specified")
+		fmt.Println("Directory is not specified")
 		return
 	}
 
