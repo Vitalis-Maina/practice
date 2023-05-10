@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 )
 
 func main() {
@@ -40,14 +41,19 @@ func main() {
 
 	fileGroups := make(map[int64][]string)
 
-	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
-		if !info.IsDir() {
-			if format == "" || filepath.Ext(path) == "."+format {
+	err := filepath.WalkDir(root, func(path string, d os.DirEntry, err error) error {
+		if !d.IsDir() {
+			ext := strings.TrimPrefix(filepath.Ext(path), ".")
+			if format == "" || strings.EqualFold(ext, format) {
+				info, err := d.Info()
+				if err != nil {
+					return err
+				}
 				size := info.Size()
 				fileGroups[size] = append(fileGroups[size], path)
 			}
 		}
-		return err
+		return nil
 	})
 
 	if err != nil {
