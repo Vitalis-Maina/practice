@@ -19,16 +19,6 @@ type Courses struct {
 	duration   string
 }
 
-func ListCourse(list []Courses) []Courses {
-	fmt.Println("listing courses offered")
-
-	var ListCourse []Courses
-	for i := range list {
-		ListCourse = append(ListCourse, list[i])
-	}
-
-	return ListCourse
-}
 func ListStudents() []Student {
 
 	fmt.Println("ALL STUDENTS IN THE DATABASE")
@@ -72,7 +62,7 @@ func (s *Student) AddStudent() {
 
 func (s Student) DeleteStudent(name string) {
 	indexToDelete := -1
-	//deleteName := "Alice" // Name to delete
+
 	for i, item := range list {
 		if item.Name == name {
 			indexToDelete = i
@@ -81,7 +71,6 @@ func (s Student) DeleteStudent(name string) {
 	}
 
 	if indexToDelete != -1 {
-		// Remove the element by appending the slices before and after the index
 		list = append(list[:indexToDelete], list[indexToDelete+1:]...)
 	}
 
